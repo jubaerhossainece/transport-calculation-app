@@ -26,4 +26,6 @@ Route::middleware('auth:api')->group(function () {
     Route::get('transport-modes/{id}/submodes/{submode_id}', [TransportSubmodeController::class, 'show']);
     Route::put('transport-modes/{id}/submodes/{submode_id}', [TransportSubmodeController::class, 'update']);
     Route::delete('transport-modes/{id}/submodes/{submode_id}', [TransportSubmodeController::class, 'destroy']);
+
+    Route::get('products/{product_id}/transport-expense/{submode_id}', [ProductController::class, 'calculateTransportPrice']);
 });

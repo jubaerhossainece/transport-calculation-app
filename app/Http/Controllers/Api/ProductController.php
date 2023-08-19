@@ -7,6 +7,8 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\TransportSubmodeResource;
+use App\Models\TransportSubmode;
 
 class ProductController extends Controller
 {
@@ -44,5 +46,22 @@ class ProductController extends Controller
         Product::findOrFail($id)->delete();
 
         return successResponseJson('Product information deleted');
+    }
+
+
+    public function calculateTransportPrice(Request $request, $product_id, $submode_id)
+    {
+        $request->validate([
+            'distance' => 'required|numeric|min:0',
+        ]);
+
+        $product = Product::findOrFail($product_id);
+        $submode = TransportSubmode::findOrFail($submode_id);
+
+        // Calculate price based on distance and cost_per_km
+        $distance = $request->input('distance');
+        $price = $distance * $submode->cost_per_km * $product->weight;
+
+        return successResponseJson(['product' => new ProductResource($product), 'submode' => new TransportSubmodeResource($submode), 'distance' => $distance, 'price' => $price]);
     }
 }
