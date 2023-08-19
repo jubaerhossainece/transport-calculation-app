@@ -3,63 +3,50 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TransportSubmodeRequest;
+use App\Http\Resources\TransportSubmodeResource;
+use App\Models\TransportMode;
+use App\Models\TransportSubmode;
 use Illuminate\Http\Request;
 
 class TransportSubmodeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index($id)
     {
-        //
+        $submodes = TransportMode::findOrFail($id)->submodes;
+        return successResponseJson(TransportSubmodeResource::collection($submodes));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function show($id, $submode_id)
     {
-        //
+        $mode = TransportMode::findOrFail($id);
+        $submode = $mode->submodes()->findOrFail($submode_id);
+        return successResponseJson(new TransportSubmodeResource($submode));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(TransportSubmodeRequest $request, $id)
     {
-        //
+
+        $mode = TransportMode::findOrFail($id);
+        $submode = $mode->submodes()->create($request->validated());
+
+        return successResponseJson(new TransportSubmodeResource($submode), 'New transportation submode has been added.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(TransportSubmodeRequest $request, $id, $submode_id)
     {
-        //
+        $mode = TransportMode::findOrFail($id);
+        $submode = $mode->submodes()->findOrFail($submode_id);
+        $submode->update($request->validated());
+
+        return successResponseJson(new TransportSubmodeResource($submode), 'Transportation submode updated successfully');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function destroy($id, $submode_id)
     {
-        //
-    }
+        $mode = TransportMode::findOrFail($id);
+        $mode->submodes()->findOrFail($submode_id)->delete();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return successResponseJson('Transportation submode information deleted');
     }
 }

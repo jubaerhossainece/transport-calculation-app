@@ -11,7 +11,7 @@ class TransportSubmodeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class TransportSubmodeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string',
+            'cost_per_km' => 'required|numeric|min:0'
         ];
     }
 }

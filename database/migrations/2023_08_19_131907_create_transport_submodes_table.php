@@ -17,7 +17,7 @@ return new class extends Migration
                     ->constrained(table: 'transport_modes', indexName: 'transport_submodes_transport_mode_id')
                     ->onUpdate('cascade');
 
-            $table->string('submode');
+            $table->string('name');
             $table->decimal('cost_per_km', 10, 2);
             $table->timestamps();
         });

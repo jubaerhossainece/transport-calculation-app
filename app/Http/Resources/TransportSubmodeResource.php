@@ -14,6 +14,11 @@ class TransportSubmodeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'transport_mode_id' => $this->transport_mode_id,
+            'name' => $this->name,
+            'cost_per_km' => $this->cost_per_km,
+        ];
     }
 }

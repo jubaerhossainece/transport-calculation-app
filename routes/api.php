@@ -21,4 +21,9 @@ Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('transport-modes', TransportModeController::class);
+    Route::get('transport-modes/{id}/submodes', [TransportSubmodeController::class, 'index']);
+    Route::post('transport-modes/{id}/submodes', [TransportSubmodeController::class, 'store']);
+    Route::get('transport-modes/{id}/submodes/{submode_id}', [TransportSubmodeController::class, 'show']);
+    Route::put('transport-modes/{id}/submodes/{submode_id}', [TransportSubmodeController::class, 'update']);
+    Route::delete('transport-modes/{id}/submodes/{submode_id}', [TransportSubmodeController::class, 'destroy']);
 });
