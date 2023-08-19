@@ -9,8 +9,9 @@ class TransportMode extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
 
     public function submodes(){
-        return $this->hasMany(TransportSubmode::class, 'transport_mode_id', 'id')
+        return $this->hasMany(TransportSubmode::class, 'transport_mode_id', 'id');
     }
 }

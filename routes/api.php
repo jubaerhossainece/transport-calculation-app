@@ -20,5 +20,5 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
     Route::resource('products', ProductController::class);
-    Route::resource('transport-modes', TransportMeanController::class);
+    Route::resource('transport-modes', TransportModeController::class);
 });

@@ -12,7 +12,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return Product::all();
+        $products = Product::all();
+        return successResponseJson(ProductResource::collection($products));
+
     }
 
     public function show($id)
@@ -41,6 +43,6 @@ class ProductController extends Controller
     {
         Product::findOrFail($id)->delete();
 
-        return successResponseJson('Your certification information deleted');
+        return successResponseJson('Product information deleted');
     }
 }
