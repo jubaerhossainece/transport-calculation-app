@@ -1,9 +1,9 @@
 <h4>1. Installation</h4>
-Clone the repository:
-</br>git clone https://github.com/yourusername/your-project.git
+Clone the repository:</br>
+git clone https://github.com/jubaerhossainece/transport-calculation-app
 
 <h4>2.Navigate to the project directory:</h4>
-cd your-project
+cd transport-calculation-app
 <h4>3. Install PHP dependencies using Composer:</h4>
 composer install
 
