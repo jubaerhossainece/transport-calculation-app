@@ -1,25 +1,25 @@
-1. Installation
+<h4>1. Installation</h4>
 Clone the repository:
-git clone https://github.com/yourusername/your-project.git
-Navigate to the project directory:
+</br>git clone https://github.com/yourusername/your-project.git
 
-2. cd your-project
-Install PHP dependencies using Composer:
+<h4>2.Navigate to the project directory:</h4>
+cd your-project
+<h4>3. Install PHP dependencies using Composer:</h4>
 composer install
 
-3. Copy the .env.example file to .env:
+<h4>4. Copy the .env.example file to .env:</h4>
 cp .env.example .env
 
-4. Generate the application key:
+<h4>5. Generate the application key:</h4>
 php artisan key:generate
 
-5. Configure your database settings in the .env file.
+<h4>6. Configure your database settings in the .env file.</h4>
 
-6. Run database migrations:
+<h4>7. Run database migrations:</h4>
 php artisan migrate
 
-7. Start the development server:
-php artisan serve
+<h4>8. Start the development server:</h4>
+php artisan serve</br>
 Your Laravel project should now be up and running at http://localhost:8000.
 
 
