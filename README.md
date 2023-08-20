@@ -22,4 +22,7 @@ php artisan migrate
 php artisan serve</br>
 Your Laravel project should now be up and running at http://localhost:8000.
 
+<h4>9. Save this to to a json file</h4>
+https://api.postman.com/collections/9972080-5fe9cac2-3fa3-4005-81d9-d7a3ea3f4245?access_key=PMAT-01H88GZVZMAX623KCRACPMM1F1
+<h4>10. Import the json file to postman</h4>
 
